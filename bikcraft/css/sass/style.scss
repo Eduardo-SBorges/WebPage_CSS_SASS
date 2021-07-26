@@ -1,4 +1,11 @@
+/* $ sass --watch ../css/sass/style.scss ..css/style.css */
+
+/* Manipulacao Scss */
+
+@import "variaveis-e-mixins";
+
 /* Gerais */
+
 @import "normalize";
 @import "reset";
 @import "grid";
