@@ -1,32 +1,29 @@
-// Variáveis do grid
-
+// Variaveis do grid
 $cols: 12;
 $gutter: 20px;
-$large-device: 1200px;
-$medium-device: 760px;
-$small-device: 480px;
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
 
 // Box-sizing
-
 *,
 *::after,
 *::before {
-  box-sizing: border-box; //trava a largura e a altura dos containers
+  box-sizing: border-box;
 }
 
 // Mixin de media-queries
-
-@mixin device($size) {
-  @if $size == large {
-    @media (min-width: #{$large-device}) {
+@mixin d($size) {
+  @if $size == l {
+    @media screen and (min-width: #{$l-device}) {
       @content;
     }
-  } @else if $size == medium {
-    @media screen and (min-width: #{$medium-device}) and (max-width: #{$large-device - 1}) {
+  } @else if $size == m {
+    @media screen and (min-width: #{$m-device}) and (max-width: #{$l-device - 1}) {
       @content;
     }
-  } @else if $size == small {
-    @media screen and (max-width: #{$medium-device - 1}) {
+  } @else if $size == s {
+    @media screen and (max-width: #{$m-device - 1}) {
       @content;
     }
   }
@@ -44,7 +41,7 @@ $small-device: 480px;
   @return $result;
 }
 
-// Gera as classes do grid
+// Gera as classes de grid
 
 @for $i from 1 through $cols {
   .grid-#{$i} {
@@ -59,7 +56,7 @@ $small-device: 480px;
   min-height: 1px;
   margin-left: $gutter / 2;
   margin-right: $gutter / 2;
-  @include device(small) {
+  @include d(s) {
     width: 100%;
     float: none;
     margin-left: 0px;
@@ -71,7 +68,7 @@ $small-device: 480px;
   @include grid-structure;
 }
 
-// Gera as classes de offset do
+// Gera as classes de offset
 
 @for $i from 1 through $cols {
   .offset-#{$i} {
@@ -80,13 +77,13 @@ $small-device: 480px;
   }
 }
 
-@include device(small) {
+@include d(s) {
   %offset {
     margin-left: 0px;
   }
 }
 
-// Mixing de clearfix
+// Mixin de clearfix
 
 @mixin clearfix {
   &::after,
@@ -98,14 +95,14 @@ $small-device: 480px;
 }
 
 @mixin container {
-  max-width: $large-device;
-  margin: 0 auto;
+  max-width: $l-device;
+  margin: 0px auto;
   position: relative;
-  @include device(medium) {
-    max-width: $medium-device;
+  @include d(m) {
+    max-width: $m-device;
   }
-  @include device(small) {
-    max-width: $small-device;
+  @include d(s) {
+    max-width: $s-device;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -118,9 +115,9 @@ $small-device: 480px;
 
 @mixin row {
   position: relative;
-  margin-left: -$gutter / 2;
-  margin-right: -$gutter / 2;
-  @include device(small) {
+  margin-left: -$gutter/2;
+  margin-right: -$gutter/2;
+  @include d(s) {
     margin-left: 0px;
     margin-right: 0px;
   }
