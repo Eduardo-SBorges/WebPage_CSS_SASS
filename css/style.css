@@ -385,8 +385,8 @@ p {
 }
 @media screen and (max-width: 759px) {
   .menu-item img {
-    width: 120px;
-    margin-top: 0px;
+    width: 110px;
+    margin-top: -25px;
   }
 }
 
